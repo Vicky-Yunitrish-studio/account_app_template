@@ -1,5 +1,5 @@
-import 'package:adaptor_games/common/combined_notifier.dart';
-import 'package:adaptor_games/common/components.dart';
+import 'package:account_app_template/common/combined_notifier.dart';
+import 'package:account_app_template/common/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
