@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:account_app_template/common/theme_sets.dart';
 import 'package:flutter/material.dart';
-import 'package:adaptor_games/common/theme_sets.dart';
 
 class CombinedNotifier with ChangeNotifier {
   ThemeMode? _themeMode;

@@ -1,15 +1,15 @@
-import 'package:adaptor_games/common/combined_notifier.dart';
-import 'package:adaptor_games/screen/main_page.dart';
+import 'package:account_app_template/common/combined_notifier.dart';
+import 'package:account_app_template/screen/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Root());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Root extends StatelessWidget {
+  const Root({super.key});
 
   @override
   Widget build(BuildContext context) {
