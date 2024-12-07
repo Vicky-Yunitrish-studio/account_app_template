@@ -1,5 +1,7 @@
 import 'package:account_app_template/common/theme_sets.dart';
 import 'package:account_app_template/common/combined_notifier.dart';
+import 'package:account_app_template/screen/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -138,9 +140,48 @@ class Components {
           footer: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      margin: const EdgeInsets.all(4),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16.0),
+                        child: Image.network(
+                          FirebaseAuth.instance.currentUser!.photoURL!,
+                          width: 96,
+                          height: 96,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(FirebaseAuth.instance.currentUser!.displayName!),
+                        Text(
+                            '電子郵件驗證: ${FirebaseAuth.instance.currentUser!.emailVerified ? "是" : "否"}'),
+                        const Text('一般使用者'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               languageKit(context, notifier),
               themeModeKit(context, notifier),
-              colorThemeKit(context, notifier)
+              colorThemeKit(context, notifier),
+              IconButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ));
+                  },
+                  icon: const Icon(Icons.logout))
             ],
           ),
           child: Container(),

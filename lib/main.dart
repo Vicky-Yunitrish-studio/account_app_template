@@ -1,10 +1,14 @@
 import 'package:account_app_template/common/combined_notifier.dart';
-import 'package:account_app_template/screen/main_page.dart';
+import 'package:account_app_template/firebase_options.dart';
+import 'package:account_app_template/screen/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Root());
 }
 
@@ -25,7 +29,7 @@ class Root extends StatelessWidget {
             locale: notifier.currentLocale,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            home: const MainPage(),
+            home: const LoginPage(),
           );
         },
       ),
